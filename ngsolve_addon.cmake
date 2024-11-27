@@ -96,7 +96,7 @@ macro(ngsolve_generate_stub_files module_name)
   set(stubgen_generation_code "execute_process(WORKING_DIRECTORY ${stubgen_working_dir} COMMAND ${Python3_EXECUTABLE} -m pybind11_stubgen --ignore-all-errors -o ${CMAKE_CURRENT_BINARY_DIR}/stubs ${module_name})")
   set(stubgen_directory "${CMAKE_CURRENT_BINARY_DIR}/stubs/${module_name}/")
   set(stubgen_file "${CMAKE_CURRENT_BINARY_DIR}/stubs/${module_name}.pyi")
-  set(stubgen_install_destination "${ADDON_INSTALL_DIR_PYTHON}/${module_name}")
+  set(stubgen_install_destination ${ADDON_INSTALL_DIR_PYTHON}/${module_name}/)
 
   install(CODE ${stubgen_generation_code})
 
