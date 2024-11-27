@@ -100,8 +100,8 @@ macro(ngsolve_generate_stub_files module_name)
 
   install(CODE ${stubgen_generation_code})
 
-  if(NOT (IS_DIRECTORY ${stubgen_install_destination} AND IS_WRITABLE ${stubgen_install_destination}))
-    message(WARNING "stub files cannot be installed to ${stubgen_install_destination}, the folder does not exist or is not writable")
+  if(NOT IS_DIRECTORY ${stubgen_install_destination})
+    message(FATAL_ERROR "stub files cannot be installed to ${stubgen_install_destination}, the folder does not exist.")
   endif()
   
   if(IS_READABLE ${stubgen_file})
@@ -109,7 +109,7 @@ macro(ngsolve_generate_stub_files module_name)
   elseif(IS_DIRECTORY ${stubgen_directory})
     install(DIRECTORY ${stubgen_directory} DESTINATION ${stubgen_install_destination})
   else()
-    message(WARNING "Unable to locate and install stub files.")
+    message(FATAL_ERROR "Unable to locate and install stub files.")
   endif()
 endmacro()
 
