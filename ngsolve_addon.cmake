@@ -101,7 +101,7 @@ macro(ngsolve_generate_stub_files module_name)
   install(CODE ${stubgen_generation_code})
 
   if(NOT IS_DIRECTORY ${CMAKE_INSTALL_PREFIX}/${stubgen_install_destination})
-    message(FATAL_ERROR "stub files cannot be installed to ${stubgen_install_destination}, the folder does not exist.")
+    message(FATAL_ERROR "stub files cannot be installed to ${CMAKE_INSTALL_PREFIX}/${stubgen_install_destination}, the folder does not exist.")
   endif()
   
   if(IS_READABLE ${stubgen_file})
