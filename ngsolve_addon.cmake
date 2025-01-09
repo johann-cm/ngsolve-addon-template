@@ -100,6 +100,7 @@ macro(ngsolve_generate_stub_files module_name)
 
   install(CODE ${stubgen_generation_code})
 
+  install(CODE "
   if(EXISTS ${stubgen_file})
     install(FILES ${stubgen_file} DESTINATION ${stubgen_install_destination})
   elseif(IS_DIRECTORY ${stubgen_directory})
@@ -107,6 +108,7 @@ macro(ngsolve_generate_stub_files module_name)
   else()
     message(FATAL_ERROR "Unable to locate and install stub files.")
   endif()
+  ")
 endmacro()
 
 message(STATUS "Install dir: ${CMAKE_INSTALL_PREFIX}")
